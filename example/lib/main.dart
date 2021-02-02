@@ -36,13 +36,16 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       // KeyPair kp = KeyPair.random();
       var account = BantupaySDK().createAccount();
-      //var account = bk.createAccount();
+      var signedHttp = BantupaySDK().signHTTP('/', '', account.secretKey);
       //_message = "ID:\n" + kp.accountId + "\n\nSEED:\n" + kp.secretSeed;
       _message = "publicKey:\n" +
           account.publicKey +
           "\n\nSEED:\n" +
-          account.secretKey;
+          account.secretKey +
+          "\n\nSigned HTTP:\n" +
+          signedHttp;
     });
+    print(_message);
   }
 
   @override

@@ -1,5 +1,8 @@
 library bantupay_sdk_flutter;
 
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:stellar_flutter_sdk/stellar_flutter_sdk.dart';
 
 class BantupaySDK {
@@ -19,6 +22,25 @@ class BantupaySDK {
     Account account = Account(keyPair.accountId, keyPair.secretSeed);
 
     return account;
+  }
+
+  String signHTTP(uri, body, secretKey) {
+//uri == "" || uri == null || body == "" || body == null ? return ""
+// create keypair using secretkey.
+    KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
+    // print('KeyPair: $keyPair');
+
+    List<int> list = '$uri$body'.codeUnits;
+    Uint8List bytes = Uint8List.fromList(list);
+
+// sign with the keypair
+    var signedData = keyPair.sign(bytes);
+
+    var signedBase64Str = base64.encode(signedData.toList());
+
+    ///  print('signedBase64Str: $signedBase64Str');
+
+    return signedBase64Str;
   }
 }
 
