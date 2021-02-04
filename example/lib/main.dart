@@ -33,10 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String _message = "";
   void _btPress() {
     setState(() {
-      // KeyPair kp = KeyPair.random();
       var account = BantupaySDK().createAccount();
       var signedHttp = BantupaySDK().signHTTP('/', '', account.secretKey);
-      //_message = "ID:\n" + kp.accountId + "\n\nSEED:\n" + kp.secretSeed;
       _message = "publicKey:\n" +
           account.publicKey +
           "\n\nSEED:\n" +
