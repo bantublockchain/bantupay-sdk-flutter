@@ -27,26 +27,36 @@ class BantupaySDK {
   String signHTTP(uri, body, secretKey) {
 //uri == "" || uri == null || body == "" || body == null ? return ""
 // create keypair using secretkey.
-    KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
-    // print('KeyPair: $keyPair');
 
-    List<int> list = '$uri$body'.codeUnits;
-    Uint8List bytes = Uint8List.fromList(list);
+    try {
+      KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
+      // print('KeyPair: $keyPair');
+
+      List<int> list = '$uri$body'.codeUnits;
+      Uint8List bytes = Uint8List.fromList(list);
 
 // sign with the keypair
-    var signedData = keyPair.sign(bytes);
+      var signedData = keyPair.sign(bytes);
 
-    var signedBase64Str = base64.encode(signedData.toList());
+      var signedBase64Str = base64.encode(signedData.toList());
 
-    ///  print('signedBase64Str: $signedBase64Str');
+      ///  print('signedBase64Str: $signedBase64Str');
 
-    return signedBase64Str;
+      return signedBase64Str;
+    } catch (e) {
+      return '';
+    }
   }
 
   importAccount(secretKey) {
-    KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
+    try {
+      KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
 
-    return keyPair.accountId;
+      return keyPair.accountId;
+    } catch (e) {
+      print('The error message is $e');
+      return '';
+    }
   }
 }
 
