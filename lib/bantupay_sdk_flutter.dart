@@ -42,6 +42,12 @@ class BantupaySDK {
 
     return signedBase64Str;
   }
+
+  importAccount(secretKey) {
+    KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
+
+    return keyPair.accountId;
+  }
 }
 
 class Account {

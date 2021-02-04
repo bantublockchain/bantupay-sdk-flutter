@@ -31,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _message = "";
-  // StellarSDK sdk = StellarSDK.TESTNET;
   void _btPress() {
     setState(() {
       // KeyPair kp = KeyPair.random();
