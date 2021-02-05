@@ -58,6 +58,30 @@ class BantupaySDK {
       return '';
     }
   }
+
+  signBase64Txn(
+      String secretKey, String transcationXDR, String networkPassphrase) {
+    try {
+      KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
+
+      var txn = AbstractTransaction.fromEnvelopeXdrString(transcationXDR);
+
+      Network network = new Network(networkPassphrase);
+
+      var bytes = txn.hash(network);
+
+// sign with the keypair
+      var signedData = keyPair.sign(bytes);
+
+      var signedBase64Str = base64.encode(signedData.toList());
+
+      ///  print('signedBase64Str: $signedBase64Str');
+
+      return signedBase64Str;
+    } catch (e) {
+      return '';
+    }
+  }
 }
 
 class Account {
