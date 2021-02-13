@@ -32,7 +32,8 @@ class BantupaySDK {
       KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
       // print('KeyPair: $keyPair');
 
-      List<int> list = '$uri$body'.codeUnits;
+      //List<int> list = '$uri$body'.codeUnits;
+      List<int> list = utf8.encode('$uri$body');
       Uint8List bytes = Uint8List.fromList(list);
 
 // sign with the keypair
@@ -51,7 +52,6 @@ class BantupaySDK {
   importAccount(secretKey) {
     try {
       KeyPair keyPair = KeyPair.fromSecretSeed(secretKey);
-
       return keyPair.accountId;
     } catch (e) {
       print('The error message is $e');
