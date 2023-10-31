@@ -85,8 +85,8 @@ class BantupaySDK {
 }
 
 class Account {
-  String publicKey;
-  String secretKey;
+  String? publicKey;
+  String? secretKey;
 
   Account(String p, String s) {
     this.publicKey = p;
@@ -95,6 +95,6 @@ class Account {
 
   @override
   String toString() {
-    return "Public-Key: " + this.publicKey + "Secret-Key: " + this.secretKey;
+    return "Public-Key: " + this.publicKey! + "Secret-Key: " + this.secretKey!;
   }
 }

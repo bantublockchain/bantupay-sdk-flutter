@@ -1,17 +1,16 @@
 name: bantupay_sdk_flutter
 description: A bantupay sdk to create account, sign transactions and get account.
-version: 2.1.6
-author: Bantu Blockchain Foundation
+version: 2.1.7
 homepage: https://bantupay.org/
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  stellar_flutter_sdk: ^1.1.0  
+  stellar_flutter_sdk: ^1.6.9  
 
 dev_dependencies:
   flutter_test:

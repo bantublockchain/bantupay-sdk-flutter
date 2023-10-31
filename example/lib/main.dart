@@ -21,9 +21,9 @@ class BantuPayFlutterDemoApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -38,9 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
       var account = bantuPaySDk.createAccount();
       var signedHttp = bantuPaySDk.signHTTP('/', '', account.secretKey);
       _message = "publicKey:\n" +
-          account.publicKey +
+          account.publicKey! +
           "\n\nSEED:\n" +
-          account.secretKey +
+          account.secretKey! +
           "\n\nSigned HTTP:\n" +
           signedHttp;
     });
@@ -51,19 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
-              '\nGenerate new random keypar\n\n',
-              style: Theme.of(context).textTheme.headline6,
+              '\nGenerate new random keypair\n\n',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             Text(
               '$_message',
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
           ],
         ),
