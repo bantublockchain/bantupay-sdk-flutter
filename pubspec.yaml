@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  stellar_flutter_sdk: ^1.6.9  
+  stellar_flutter_sdk: ^1.6.2
 
 dev_dependencies:
   flutter_test:
