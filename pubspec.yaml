@@ -4,13 +4,13 @@ version: 2.1.7
 homepage: https://bantupay.org/
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ^3.9.0
+  flutter: ">=3.41.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  stellar_flutter_sdk: ^1.6.9  
+  stellar_flutter_sdk: ^3.5.0
 
 dev_dependencies:
   flutter_test:
